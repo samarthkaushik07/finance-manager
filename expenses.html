@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Expenses — Finance Manager</title>
+  <meta name="description" content="Add, edit, and manage all your income and expense transactions." />
+  <link rel="stylesheet" href="styles/main.css" />
+  <link rel="stylesheet" href="styles/expenses.css" />
+</head>
+<body>
+
+<div class="app-layout">
+
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24" width="22" height="22" stroke="black" stroke-width="2.5" fill="none">
+          <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/>
+          <path d="M4 6v12a2 2 0 0 0 2 2h14v-4"/>
+          <rect x="14" y="11" width="8" height="5" rx="1"/>
+        </svg>
+      </div>
+      <div class="logo-text">
+        FinanceManager
+        <span>GraphicCodeHackers</span>
+      </div>
+    </div>
+    <nav class="sidebar-nav" role="navigation" aria-label="Main navigation">
+      <div class="nav-section-label">Main</div>
+      <a href="dashboard.html" class="nav-link">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="display:block;">
+            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+            <polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+        </span>
+        <span class="nav-label">Dashboard</span>
+      </a>
+      <a href="expenses.html" class="nav-link active">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="display:block;">
+            <rect x="1" y="4" width="22" height="16" rx="2" ry="2"/>
+            <line x1="1" y1="10" x2="23" y2="10"/>
+          </svg>
+        </span>
+        <span class="nav-label">Expenses</span>
+      </a>
+      <a href="reports.html" class="nav-link">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="display:block;">
+            <line x1="18" y1="20" x2="18" y2="10"/>
+            <line x1="12" y1="20" x2="12" y2="4"/>
+            <line x1="6" y1="20" x2="6" y2="14"/>
+          </svg>
+        </span>
+        <span class="nav-label">Reports</span>
+      </a>
+      <div class="nav-section-label" style="margin-top:16px;">Account</div>
+      <a href="dashboard.html#profile" class="nav-link">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="display:block;">
+            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+            <circle cx="12" cy="7" r="4"/>
+          </svg>
+        </span>
+        <span class="nav-label">Profile</span>
+      </a>
+      <a href="dashboard.html#settings" class="nav-link">
+        <span class="nav-icon">
+          <svg viewBox="0 0 24 24" width="18" height="18" stroke="currentColor" stroke-width="2" fill="none" style="display:block;">
+            <circle cx="12" cy="12" r="3"/>
+            <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+          </svg>
+        </span>
+        <span class="nav-label">Settings</span>
+      </a>
+    </nav>
+    <div class="sidebar-footer">
+      <div class="sidebar-user" onclick="logout()">
+        <div class="user-avatar" data-user-initials>SK</div>
+        <div class="user-info">
+          <div class="user-name" data-user-name>Samarth Kaushik</div>
+          <div class="user-role" data-user-role>Admin</div>
+        </div>
+        <span class="user-logout" title="Logout" style="display:flex; align-items:center;">
+          <svg viewBox="0 0 24 24" width="16" height="16" stroke="currentColor" stroke-width="2.5" fill="none" style="color:var(--clr-red)">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/>
+            <polyline points="16 17 21 12 16 7"/>
+            <line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+        </span>
+      </div>
+    </div>
+  </aside>
+
+  <div id="sidebar-overlay" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); z-index:99; backdrop-filter:blur(4px);"
+       onclick="document.querySelector('.sidebar').classList.remove('open'); this.style.display='none';"></div>
+
+  <!-- ── Main Content ── -->
+  <div class="main-content">
+
+    <header class="topbar">
+      <div style="display:flex; align-items:center; gap:12px;">
+        <button class="menu-toggle" id="menu-toggle" aria-label="Toggle sidebar">☰</button>
+        <div class="topbar-title">
+          <h1>Transactions</h1>
+          <p>Manage all your income & expenses</p>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <button class="btn btn-primary" onclick="openAddModal()" id="add-expense-btn">
+          <span>＋</span> Add Transaction
+        </button>
+      </div>
+    </header>
+
+    <main class="page-body">
+
+      <!-- Summary Pills -->
+      <div class="expense-summary">
+        <div class="summary-pill income">
+          <div class="summary-pill-icon" style="color:var(--clr-green); background:rgba(34,197,94,0.12);"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+          <div class="summary-pill-info">
+            <div class="summary-pill-label">Total Income</div>
+            <div class="summary-pill-value" id="sum-income">₹0</div>
+          </div>
+        </div>
+        <div class="summary-pill expense">
+          <div class="summary-pill-icon" style="color:var(--clr-red); background:rgba(239,68,68,0.12);"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none"><rect x="2" y="5" width="20" height="14" rx="2"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div>
+          <div class="summary-pill-info">
+            <div class="summary-pill-label">Total Expenses</div>
+            <div class="summary-pill-value" id="sum-expense">₹0</div>
+          </div>
+        </div>
+        <div class="summary-pill net">
+          <div class="summary-pill-icon" style="color:var(--clr-indigo); background:rgba(79,70,229,0.12);"><svg viewBox="0 0 24 24" width="22" height="22" stroke="currentColor" stroke-width="2.5" fill="none"><path d="M3 21h18M3 10h18M5 6l7-3 7 3M4 10v11M20 10v11M8 14v3M12 14v3M16 14v3"/></svg></div>
+          <div class="summary-pill-info">
+            <div class="summary-pill-label">Net Balance</div>
+            <div class="summary-pill-value" id="sum-net">₹0</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Toolbar -->
+      <div class="expenses-toolbar">
+        <div class="expenses-filters">
+          <div class="filter-search">
+            <svg viewBox="0 0 24 24" width="14" height="14" stroke="currentColor" stroke-width="2.5" fill="none" style="color:var(--txt-secondary);"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            <input type="text" id="search-input" placeholder="Search transactions..." aria-label="Search transactions" />
+          </div>
+          <select class="filter-select" id="filter-type" aria-label="Filter by type">
+            <option value="">All Types</option>
+            <option value="income">Income</option>
+            <option value="expense">Expense</option>
+          </select>
+          <select class="filter-select" id="filter-category" aria-label="Filter by category">
+            <option value="">All Categories</option>
+          </select>
+          <select class="filter-select" id="filter-sort" aria-label="Sort by">
+            <option value="date-desc">Latest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="amount-desc">Highest Amount</option>
+            <option value="amount-asc">Lowest Amount</option>
+          </select>
+          <input type="date" class="filter-select" id="filter-date-from" title="From date" />
+          <input type="date" class="filter-select" id="filter-date-to"   title="To date" />
+          <button class="btn btn-secondary btn-sm" onclick="clearFilters()">Clear ✕</button>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="table-container">
+        <div class="table-header">
+          <h2 id="table-title">All Transactions</h2>
+          <div class="table-header-right">
+            <span id="table-count" style="color:var(--txt-secondary); font-size:13px;"></span>
+            <button class="btn btn-secondary btn-sm" onclick="exportCSV()" title="Export as CSV"><svg viewBox="0 0 24 24" width="12" height="12" stroke="currentColor" stroke-width="2.5" fill="none" style="display:inline-block; vertical-align:middle; margin-right:4px;"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg> Export CSV</button>
+          </div>
+        </div>
+        <div class="table-scroll">
+          <table class="data-table" id="expense-table" role="grid" aria-label="Transactions table">
+            <thead>
+              <tr>
+                <th>Description</th>
+                <th>Category</th>
+                <th>Type</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="expense-tbody">
+              <tr>
+                <td colspan="6">
+                  <div class="empty-state">
+                <div class="spinner" style="margin:0 auto; width:36px; height:36px;"></div>
+                <p>Loading transactions...</p>
+              </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="pagination" id="pagination">
+          <span id="pagination-info"></span>
+          <div class="page-btns" id="page-btns"></div>
+        </div>
+      </div>
+
+    </main>
+  </div>
+</div>
+
+<!-- ── Add / Edit Transaction Modal ── -->
+<div class="modal-overlay" id="tx-modal">
+  <div class="modal" style="max-width:580px;">
+    <div class="modal-header">
+      <h2 id="modal-title">Add Transaction</h2>
+      <button class="modal-close" onclick="closeModal('tx-modal')">✕</button>
+    </div>
+
+    <!-- Type Toggle -->
+    <div class="form-group" style="margin-bottom:20px;">
+      <label class="form-label">Transaction Type</label>
+      <div class="type-toggle">
+        <button type="button" class="type-toggle-btn active-income" id="type-income" onclick="setType('income')">
+          Income
+        </button>
+        <button type="button" class="type-toggle-btn" id="type-expense" onclick="setType('expense')">
+          Expense
+        </button>
+      </div>
+    </div>
+
+    <input type="hidden" id="modal-id" />
+    <input type="hidden" id="modal-type" value="income" />
+
+    <div class="modal-grid">
+      <div class="form-group full">
+        <label class="form-label" for="modal-desc">Description *</label>
+        <input id="modal-desc" class="form-control" type="text" placeholder="e.g. Grocery shopping" maxlength="100" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="modal-amount">Amount (₹) *</label>
+        <input id="modal-amount" class="form-control" type="number" min="0.01" step="0.01" placeholder="0.00" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label" for="modal-date">Date *</label>
+        <input id="modal-date" class="form-control" type="date" />
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Category *</label>
+        <div class="category-picker" id="category-picker"></div>
+        <input type="hidden" id="modal-category" />
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label" for="modal-note">Note (optional)</label>
+        <input id="modal-note" class="form-control" type="text" placeholder="Additional notes..." maxlength="200" />
+      </div>
+    </div>
+
+    <div style="display:flex; gap:12px; margin-top:24px;">
+      <button class="btn btn-secondary w-full" onclick="closeModal('tx-modal')">Cancel</button>
+      <button class="btn btn-primary w-full" id="modal-save-btn" onclick="saveTransaction()">
+        Save Transaction
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- ── Delete Confirm Modal ── -->
+<div class="modal-overlay" id="delete-modal">
+  <div class="modal" style="max-width:400px;">
+    <div class="confirm-delete">
+      <div class="del-icon" style="color:var(--clr-red); display:flex; align-items:center; justify-content:center; margin: 0 auto 12px;"><svg viewBox="0 0 24 24" width="48" height="48" stroke="currentColor" stroke-width="2" fill="none"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/><line x1="10" y1="11" x2="10" y2="17"/><line x1="14" y1="11" x2="14" y2="17"/></svg></div>
+      <h3>Delete Transaction?</h3>
+      <p>This action cannot be undone. The transaction will be permanently removed.</p>
+    </div>
+    <input type="hidden" id="delete-id" />
+    <div style="display:flex; gap:12px; margin-top:24px;">
+      <button class="btn btn-secondary w-full" onclick="closeModal('delete-modal')">Keep It</button>
+      <button class="btn btn-danger w-full" onclick="confirmDelete()">Yes, Delete</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast-container"></div>
+
+<script src="js/data.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/expenses.js"></script>
+</body>
+</html>
